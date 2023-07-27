@@ -1,0 +1,29 @@
+Q -> select D from T
+D -> distinct p|p
+p -> *|A
+A -> A2A1
+A1 -> ,A|%
+A2 -> idA3
+A3 -> .id|%
+
+% es epsilon
+
+void Q(){
+	switch(preanalisis)
+		case select:
+			D();
+			coincidir(from);
+			T();
+			break;
+		default;
+			error();
+}
+
+void D(){
+	switch(preanalisis)
+		case distinct:
+			p();
+		case *:
+		case id:
+			break;
+}
